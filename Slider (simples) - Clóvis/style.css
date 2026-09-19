@@ -1,0 +1,77 @@
+/*as imagens estão sobrepondo-se umas às outras, e cada uma é exibida conforme o input correspondente é selecionado*/
+
+
+
+* {/*resetar margem e espaçamento padrão*/
+    margin: 0; 
+    padding: 0; 
+}
+.slider {/*define tamanho e posicionamento*/
+	display: block;/*se comporta como um bloco, ocupa toda a largura disponível e começa em uma nova linha*/
+	height: 293px;
+	width: 600px;
+	margin: auto;/*centraliza o elemento horizontalmente, só se a largura estiver definida*/
+	margin-top: 20px;
+	position: relative;/*significa que tudo qeu tiver dentro dele vai ser posicionado absolutamente em relação a ele*/
+}
+
+.slider li {
+	list-style: none;
+	position: absolute;/*posiciona cada item(li) absolutamente dentro do contêiner SLIDER. Significa que todos li são posicionados um sobre o outro, no mesmo local*/
+}
+
+.slider img {/*define o tamanho das imagens para preencher o contêiner SLIDER*/
+	margin: auto;
+	height: 100%;/*garante que tds imagens preencham o contêiner li completamente*/
+	width: 100%;
+	vertical-align: top;/*alinha o topo das img com a linha de base do contêiner pai SLIDER. pra tudo ficar igual (tamanho)*/
+	transition: 1s;
+}
+
+.slider input {/*tira os input do display (oculta da tela)*/
+    display: none;
+}
+
+.slider label { /*estiliza e posiciona os labels(funcionam como botões)*/
+	background-color: #d83911;
+	border-radius: 10px;
+	bottom: 10px;/*posiciona o label a 10 pixels acima da borda inferior do contêiner SLIDER*/
+	cursor: pointer;
+	display: block;
+	height: 10px;
+	position: absolute;
+	width: 10px;
+	z-index: 10;/*define a ordem de empilhamento, garantindo que o elemento com z-index maior fique sobre outros com z-index menor*/
+}
+
+
+
+/*define a posição dos labels*/
+/*Cada label é posicionado a uma distância específica da borda esquerda do contêiner slider usando a propriedade left*/
+.slider li:nth-child(1)/*seleciona o primeiro <li>*/ label {
+	left: 10px; /* posiciona o label 40 pixels da borda esquerda do contêiner pai*/
+	transform: scale(1.05);
+}
+
+.slider li:nth-child(2) label {
+	left: 40px;
+}
+
+.slider li:nth-child(3) label {
+	left: 70px;
+}
+
+
+
+
+.slider img {/*oculta as imagens. só wuando um input de rádio é selecionado (:checked), a imagem associada ao input fica visível*/
+	opacity: 0;
+	visibility: hidden;
+}
+.slider li input:checked ~ img {/*operador ~ é um seletor de irmãos gerais, ele pega todas as img que estão com o input checked e aplica aqls estilos específicos*/
+	opacity: 1;
+	visibility: visible;
+	z-index: 10;
+}
+
+/*O seletor de irmãos gerais (~) seleciona todos os elementos irmãos (no mesmo nível) que seguem o elemento especificado*/

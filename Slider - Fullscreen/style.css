@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.fundo{
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+}
+
+
+.fundo li{
+    list-style: none;
+}
+.fundo input{
+    display: none;
+}
+
+
+.centralizar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fundo li label{
+    display: block;
+    z-index: 10;
+    position: absolute;
+    background-color: rgb(240, 248, 255);
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    bottom: 30px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.fundo li label:hover{
+    transform: scale(1.05);
+}
+
+.fundo img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*pra imagem cubrir o elemento pai*/
+    transition: 1s;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.774);
+}
+
+.fundo li:nth-child(2) label{
+    margin-right: 100px;
+}
+.fundo li:nth-child(3) label{
+    margin-right: -100px;
+}
+
+.fundo img{
+    opacity: 0;
+    visibility: hidden;
+}
+.fundo li input:checked ~ img{
+    opacity: 1;
+    visibility: visible;
+}
+
+.fundo label:hover{
+    background-color: rgba(168, 168, 168, 0.123);
+    border: 2px solid #ffff;
+}
